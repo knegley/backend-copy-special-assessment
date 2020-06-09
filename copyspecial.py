@@ -19,30 +19,37 @@ import argparse
 
 def get_special_paths(dirname):
     """Given a dirname, returns a list of all its special files."""
-    # if os.path.exists(dirname) and os.path.isdir(dirname):
-    #     with os.scandir(dirname) as directory:
-    #         files = [os.path.abspath(item)
-    #                  for item in directory if item.is_file()]
-    #         # for item in directory:
-    #         #     # print(item)
-    #         #     # print(item.is_file())
-    #         #     if item.is_file():
-    #         #         print(os.path.abspath(item))
-    #         # print("\n".join(files))
+    if os.path.exists(dirname) and os.path.isdir(dirname):
+        with os.scandir(dirname) as directory:
+            files = [os.path.abspath(item)
+                     for item in directory if item.is_file()]
+            # for item in directory:
+            #     # print(item)
+            #     # print(item.is_file())
+            #     if item.is_file():
+            #         print(os.path.abspath(item))
+            # print("\n".join(files))
+        pattern = re.compile(r"[__](\w+)[__]")
+        special_files = [item for item in files if pattern.search(item)]
 
-    #     return "\n".join(files)
-    # else:
-    #     print("Path and Directory does not exist")
+        return (special_files)
+    else:
+        print("Path and Directory does not exist")
 
-    special_files = []
-    list_paths = os.listdir(dirname)
-    for file in list_paths:
-        pattern = re.search(r"[__](\w+)[__]", file)
-        if pattern:
-            special_files.append(os.path.abspath(
-                (os.path.join(dirname, file))))
 
-    return special_files
+# code that ybrahim walked through for me ####################
+
+    # special_files = []
+    # list_paths = os.listdir(dirname)
+    # for file in list_paths:
+    #     pattern = re.search(r"[__](\w+)[__]", file)
+    #     if pattern:
+    #         special_files.append(os.path.abspath(
+    #             (os.path.join(dirname, file))))
+
+    # return special_files
+
+#################################################################
 # print(os.getcwd())
 # print(get_special_paths(os.getcwd()))
 # (get_special_paths("helloasdfage"))
@@ -145,7 +152,7 @@ def main():
     elif zip_dir:
         zip_to(special_paths, zip_dir)
     else:
-        print("\n".join(special_paths))
+        print("\n".join((special_paths)))
 
     # Parsing command line arguments is a must-have skill.
     # This is input data validation. If something is wrong (or missing) with
