@@ -7,11 +7,11 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 
 # give credits
-__author__ = "???"
+__author__ = "Kyle Negley and Ybrahim(COACH)"
 
 import re
 import os
-import sys
+# import sys
 import shutil
 import subprocess
 import argparse
@@ -69,6 +69,8 @@ def get_special_paths(dirname):
 
 
 def copy_to(path_list, dest_dir):
+
+    # Ybrahmim helped me properly use the shutil copy
     if not os.path.isdir(dest_dir):
 
         os.makedirs(dest_dir)
@@ -79,6 +81,7 @@ def copy_to(path_list, dest_dir):
         shutil.copy(item, path)
 
     # your code here
+    # my junk code is below here that i tried before reaching out to ybrahim
 
     # if os.path.isdir(dest_dir):
     #     for item in path_list:
@@ -125,6 +128,9 @@ def copy_to(path_list, dest_dir):
 
 def zip_to(path_list, dest_zip):
 
+    for item in path_list:
+
+        subprocess.run(["zip", "-j", dest_zip, item])
     return
 
 
