@@ -96,13 +96,14 @@ def copy_to(path_list, dest_dir):
     #                 else:
     #                     shutil.copy(item, dest_dir)
 
-    #             else:
-    #                 print(
-    #                     f"The path: {item} can't be copied because file doesn't exits")
+    #  else:
+    #    print(
+    #   f"The path: {item} can't be copied because file doesn't exits")
     #             return
     # print(f"the directory {dest_dir} does not exist")
     # dir_response = input(
-    #     "would you like to create a directory with the path_list? respond Y or N\n")
+    # "would you like to create a directory w
+    #   ith the path_list? respond Y or N\n")
     # if dir_response == "N":
     #     return
     # if dir_response == "Y":
